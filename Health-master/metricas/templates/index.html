@@ -1,0 +1,64 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<a href="show/">Volver</a>
+<form method="POST" class="post-form" action="/diary">
+    {% csrf_token %}
+    <div class="container">
+        <br>
+        <div class="form-group row">
+            <label class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-4">
+                <h3>Agregar Detalles</h3>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Nombres:</label>
+            <div class="col-sm-4">
+                {{ form.names }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Apellidos:</label>
+            <div class="col-sm-4">
+                {{ form.surnames }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Edad:</label>
+            <div class="col-sm-4">
+                {{ form.age }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Peso:</label>
+            <div class="col-sm-4">
+                {{ form.weight }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Ritmo cardiaco:</label>
+            <div class="col-sm-4">
+                {{ form.heartRate }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Saturación de oxígeno en sangre:</label>
+            <div class="col-sm-4">
+                {{ form.bloodOxygenSaturation }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Nivel de estrés:</label>
+            <div class="col-sm-4">
+                {{ form.stresslevel }}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

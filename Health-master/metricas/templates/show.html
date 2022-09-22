@@ -1,0 +1,40 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRES</th>
+            <th scope="col">APELLIDOS</th>
+            <th scope="col">EDAD</th>
+            <th scope="col">PESO</th>
+            <th scope="col">HEART RATE</th>
+            <th scope="col">SATURACION DE OXIGENO EN SANGRE(SPO2)</th>
+            <th scope="col">NIVEL ACTUAL DE ESTRES</th>
+            <th scope="col">ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for metrics in metric %}
+        <tr>
+            <th scope="row">{{ metrics.id }}</th>
+            <td>{{ metrics.names }}</td>
+            <td>{{ metrics.surnames }}</td>
+            <td>{{ metrics.age }}</td>
+            <td>{{ metrics.weight }}</td>
+            <td>{{ metrics.heartRate }}</td>
+            <td>{{ metrics.bloodOxygenSaturation }}</td>
+            <td>{{ metrics.stresslevel }}</td>
+            <td class="d-flex justify-content-around">
+                <a href="/edit/{{ metrics.id }}"><span class="glyphicon glyphicon-pencil">EDITAR</span></a>
+                <a href="/delete/{{ metrics.id }}">ELIMINAR</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<center><a href="/diary" class="btn btn-primary">AGREGAR NUEVO REGISTRO</a></center>
+{% endblock %}

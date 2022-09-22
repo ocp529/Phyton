@@ -1,0 +1,78 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<form method="POST" class="post-form" action="/update/{{metrics.id}}">
+    {% csrf_token %}
+    <div class="container">
+        <br>
+        <div class="form-group row">
+            <label class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-4">
+                <h3>Actualizar Detalles</h3>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Nombres:</label>
+            <div class="col-sm-4">
+                <input type="text" name="names" id="id_names" required maxlength="100" value="{{ metrics.names }}" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Apellidos:</label>
+            <div class="col-sm-4">
+                <input type="text" name="surnames" id="id_surnames" required maxlength="100" value="{{ metrics.surnames }}" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Edad:</label>
+            <div class="col-sm-4">
+                <input type="number" name="age" id="id_age" required maxlength="3"
+                    value="{{ metrics.age }}" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Peso:</label>
+            <div class="col-sm-4">
+                <input type="number" name="weight" id="id_weight" required maxlength="2"
+                    value="{{ metrics.weight }}" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Ritmo cardiaco:</label>
+            <div class="col-sm-4">
+                <input type="number" name="heartRate" id="id_heartRate" required maxlength="3"
+                    value="{{ metrics.heartRate }}" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Saturación de oxígeno en sangre:</label>
+            <div class="col-sm-4">
+                <input type="number" name="bloodOxygenSaturation" id="id_bloodOxygenSaturation" required maxlength="3"
+                    value="{{ metrics.bloodOxygenSaturation }}" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Nivel de estrés:</label>
+            <div class="col-sm-4">
+                <select name="stresslevel" id="id_stresslevel">
+                    {% for stressLevel in stressLevels %}
+                        <option value="{{stressLevel.0}}"
+                            {% if stressLevel.0 == metrics.stresslevel %}selected="selected"{% endif %}>
+                            {{ stressLevel.1 }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-2">
+                <button href="../../" class="btn btn-secondary">Volver</button>
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-success">Actualizar</button>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
